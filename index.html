@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <!-- Meta tags for social media banners, these should be filled in appropriatly as they are your "business card" -->
+    <!-- Replace the content tag with appropriate information -->
+    <meta name="description" content="Dissecting Open Edge Computing Platforms: Ecosystem, Usage, and Security Risks">
+    <meta property="og:title" content="Dissecting Open Edge Computing Platforms"/>
+    <meta property="og:description" content="Ecosystem, Usage, and Security Risks."/>
+    <meta property="og:url" content="https://chasesecurity.github.io/Open_Edge_Computing_Platforms/"/>
+    <!-- Path to banner image, should be in the path listed below. Optimal dimenssions are 1200X630-->
+    <meta property="og:image" content="static/image/fig1.png" />
+    <meta property="og:image:width" content="638"/>
+    <meta property="og:image:height" content="341"/>
+    <meta name="twitter:title" content="Dissecting Open Edge Computing Platforms">
+    <meta name="twitter:description" content="Ecosystem, Usage, and Security Risks.">
+    <!-- Keywords for your paper to be indexed by-->
+    <meta name="keywords" content="Open Edge Computing Platforms, Man-in-the-Middle Attacks">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Open Edge Computing Platforms</title>
+    <link rel="icon" type="image/x-icon" href="static/images/ustc.ico">
+<!--     <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+      rel="stylesheet"> -->
+      <link rel="stylesheet" href="static/css/bulma.min.css">
+      <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+      <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+      <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+      <link rel="stylesheet" href="static/css/index.css">
+      <script src="static/js/jquery.min.js"></script>
+      <script src="static/js/main.js"></script>
+      <script defer src="static/js/fontawesome.all.min.js"></script>
+      <script src="static/js/bulma-carousel.min.js"></script>
+      <script src="static/js/bulma-slider.min.js"></script>
+      <script src="static/js/index.js"></script>
+      </head>
+      <body>
+        <section class="hero">
+          <div class="hero-body">
+            <div class="container is-max-desktop">
+              <div class="columns is-centered">
+                <div class="column has-text-centered">
+                  <h1 class="title is-1 publication-title">Dissecting Open Edge Computing Platforms: Ecosystem, Usage, and Security Risks</h1>
+                  <div class="is-size-5 publication-authors">
+                    <!-- Paper authors -->
+                    <span class="author-block">
+                      <a class="publication-author-nolink" target="_blank">Yu Bi</a><sup>*,1</sup>,
+                    </span>
+                    <span class="author-block">
+                      <a class="publication-author-nolink" target="_blank">Mingshuo Yang</a><sup>*,2</sup>,
+                    </span>
+                    <span class="author-block">
+                      <a class="publication-author-nolink" target="_blank">Yong Fang</a><sup>1</sup>,
+                    </span>
+                    <span class="author-block">
+                      <a href="https://xianghang.me/" target="_blank">Xianghang Mi</a><sup>&dagger;,1</sup>,
+                    </span>
+                    <span class="author-block">
+                      <a class="publication-author-nolink" target="_blank">Shanqing Guo</a><sup>&dagger;,2</sup>,
+                    </span>
+                    <span class="author-block">
+                      <a class="publication-author-nolink" target="_blank">Shujun Tang</a><sup>3</sup>,
+                    </span>
+                    <span class="author-block">
+                      <a href="https://netsec.ccert.edu.cn/people/duanhx/" target="_blank">Haixin Duan</a><sup>3,4</sup>
+                    </span>
+                  </div>
+                  <div class="is-size-5 publication-authors">
+                    <span class="eql-cntrb"><sup>1</sup>University of Science and Technology of China, 
+                      <sup>2</sup>Shandong University, <br>
+                      <sup>3</sup>Qi An Xin Technology Research Institute, 
+                      <sup>4</sup>Tsinghua University<br>
+                      <strong>ACSAC 2024</strong>
+                    </span>
+                    <span class="eql-cntrb">
+                      <small>
+                      <br>
+                      <sup>*</sup>Both authors contributed equally to this research.
+                      <br>
+                      <sup>&dagger;</sup>Corresponding authors.
+                      </small>
+                    </span>
+                  </div>
+                  <div class="column has-text-centered">
+                    <div class="publication-links">
+                      <!-- Arxiv PDF link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/pdf/2404.09681.pdf" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fas fa-file-pdf"></i>
+                          </span>
+                          <span>Paper</span>
+                        </a>
+                      </span>
+                      <!-- Github link -->
+                      <span class="link-block">
+                        <a href="https://github.com/ChaseSecurity/Open_Edge_Computing_Platforms" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="fab fa-github"></i>
+                          </span>
+                          <span>Code</span>
+                        </a>
+                      </span>
+                      <!-- ArXiv abstract Link -->
+                      <span class="link-block">
+                        <a href="https://arxiv.org/abs/2404.09681" target="_blank"
+                          class="external-link button is-normal is-rounded is-dark">
+                          <span class="icon">
+                            <i class="ai ai-arxiv"></i>
+                          </span>
+                          <span>arXiv</span>
+                        </a>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Teaser -->
+        <section class="hero teaser">
+          <div class="container is-max-desktop">
+            <div class="hero-body" align="center">
+              <img src="static/images/fig1.png" width="70%"/>
+              <h2 class="subtitle has-text-centered" style="margin-top:20px;">
+              <strong>The Open Edge Computing Ecosystem</strong>
+              </h2>
+            </div>
+          </div>
+        </section>
+        <!-- End teaser -->
+        <!-- Paper abstract -->
+        <section class="section hero is-light">
+          <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                  <p>
+                    Emerging in recent years, open edge computing platforms (OECPs) claim large-scale edge nodes, the extensive usage and adoption, as well as the openness to any third parties to join as edge nodes. For instance, OneThingCloud, a major OECP operated in China, advertises 5 million edge nodes, 70TB bandwidth, and 1,500PB storage. However, little information is publicly available for such OECPs with regards to their technical mechanisms and involvement in edge computing activities. Furthermore, different from known edge computing paradigms, OECPs feature an open ecosystem wherein any third party can participate as edge nodes and earn revenue for the contribution of computing and bandwidth resources, which, however, can introduce byzantine or even malicious edge nodes and thus break the traditional threat model for edge computing. In this study, we conduct the first empirical study on two representative OECPs, which is made possible through the deployment of edge nodes across locations, the efficient and semi-automatic analysis of edge traffic as well as the carefully designed security experiments. As the results, a set of novel findings and insights have been distilled with regards to their technical mechanisms, the landscape of edge nodes, the usage and adoption, and the practical security/privacy risks. Particularly, millions of daily active edge nodes have been observed, which feature a wide distribution in the network space and the extensive adoption in content delivery towards end users of 16 popular Internet services. Also, multiple practical and concerning security risks have been identified along with acknowledgements received from relevant parties, e.g., the exposure of long-term and cross-edge-node credentials, the co-location with malicious activities of diverse categories, the failures of TLS certificate verification, the extensive information leakage against end users, etc. 
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- End paper abstract -->
+        <!-- Section 1 -->
+        <section class="section">
+          <div class="container is-max-desktop">
+            <h2 class="title">Collecting and Analyzing Edge Activities</h2>
+            <p>
+              To figure out what purpose the OECP traffic flow is intended for, and what remote parties have communicated with our self-deployed edge nodes, and ultimately understand what edge computing activities have been conducted in OECPs, we pursue edge tasks through a combination of manual analysis and automatic measurements. 
+              <br>
+              The manual analysis allows us to gain qualitative knowledge such as the categories of edge traffic flows, and the signatures to associate traffic flows with different categories or distinct remote parties. The automatic measurements are designed to generate quantitative measurement results, e.g.,  the volume and shares of different traffic categories.
+            </p>
+            <div align="center">
+              <img src="static/images/fig2.png"/>
+              <h2 class="subtitle has-text-centered">
+                <strong>The Pipeline of the Edge Traffic Analyzer</strong>
+              </h2>
+            </div>
+          </div>
+        </section>
+        
+        <!-- Section 2 -->
+        <section class="section">
+          <div class="container is-max-desktop content">
+            <h2 class="title">The Ecosystem</h2>
+            <ul>
+              <li><strong class="subtitle">Edge Computing Nodes</strong></li>
+              <p>
+                As learned from edge traffic captured by ourselves, 22,214 edge node IPs have ever communicated with ones under our control, among which, 17,585 are YunFan CDN nodes (Tiptime edge nodes), and 2,818 are Xingyu CDN nodes (OneThingCloud nodes), and 1,817 are Bilibili CDN nodes that claim to be OneThingCloud nodes.
+              </p>
+              <table>
+                <caption><strong>The stats of edge nodes as observed in edge traffic.</strong></caption>
+                <thead>
+                    <tr>
+                        <th>OECP</th>
+                        <th>Node Source</th>
+                        <th>Node IPs</th>
+                        <th>/8 IPv4</th>
+                        <th>ASes</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TipTime</td>
+                        <td>YunFan CDN</td>
+                        <td>17,585</td>
+                        <td>51</td>
+                        <td>46</td>
+                    </tr>
+                    <tr>
+                        <td>OneThingCloud</td>
+                        <td>Bilibili CDN</td>
+                        <td>1,817</td>
+                        <td>49</td>
+                        <td>38</td>
+                    </tr>
+                    <tr>
+                        <td>OneThingCloud</td>
+                        <td>Xingyu CDN</td>
+                        <td>2,818</td>
+                        <td>32</td>
+                        <td>5</td>
+                    </tr>
+                    <tr>
+                        <td>Both</td>
+                        <td>All</td>
+                        <td>22,214</td>
+                        <td>54</td>
+                        <td>67</td>
+                    </tr>
+                </tbody>
+              </table>
+              <p>
+                Through analyzing the edge traffic, several side channels have been successfully identified to gain an upper-bound approximation for edge nodes. For example, we observe that  YunFan CDN assigns to each CDN node unique FQDNs (fully qualified domain names) and such FQDNs follow unified subdomain patterns. Therefore, querying passive DNS with these FQDN patterns can reveal historically active CDN node IPs, which provides another channel to upper-bound estimated edge nodes of TipTime.
+              </p>
+              <table>
+                <caption><strong>The stats of edge nodes as observed in passive DNS.</strong></caption>
+                <thead>
+                    <tr>
+                        <th>OECP</th>
+                        <th>Node FQDNs</th>
+                        <th>Node IPs<sup>1</sup></th>
+                        <th>IPv6</th>
+                        <th>/8 IPv4</th>
+                        <th>ASes<sup>2</sup></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>TipTime</td>
+                        <td>4,233,571,373</td>
+                        <td>28,212,313</td>
+                        <td>9,416,567</td>
+                        <td>89</td>
+                        <td>114</td>
+                    </tr>
+                    <tr>
+                        <td>OneThingCloud</td>
+                        <td>100,492,251</td>
+                        <td>7,383,677</td>
+                        <td>4,654,242</td>
+                        <td>255</td>
+                        <td>182</td>
+                    </tr>
+                    <tr>
+                        <td>Both</td>
+                        <td>4,334,063,624</td>
+                        <td>34,364,400</td>
+                        <td>14,070,775</td>
+                        <td>255</td>
+                        <td>237</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="6">
+                            <small>
+                                <sup>1</sup> Both IPv4 and IPv6 addresses.<br>
+                                <sup>2</sup> Each platform has 500K IPs sampled to query IPinfo for autonomous systems (ASes).
+                            </small>
+                        </td>
+                    </tr>
+                </tfoot>
+              </table>
+
+              <li><strong class="subtitle">Edge-Assisted Content Delivery</strong></li>
+              <p>
+                All edge computing tasks observed in our study are content delivery tasks which involve the collaboration between CDN services and the open edge computing platforms. 
+                Through analyzing the traffic flows of these CDN tasks, we have identified 16 upstream content providers that subscribe to one or more of these 6 CDN services and have their content payloads delivered through edge nodes of the two OECPs. 
+              </p>
+              <table>
+                <caption><strong>The list of CDN services and content providers.</strong></caption>
+                <thead>
+                    <tr>
+                        <th>CDN</th>
+                        <th>OECP</th>
+                        <th>Content Provider</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>YunFan CDN</td>
+                        <td>TipTime</td>
+                        <td>KuaiShou, Douyin, Baidu Cloud, PPTV, Mogen Cloud, Jingdong Cloud, Zuiyou</td>
+                    </tr>
+                    <tr>
+                        <td>Wangsu CDN</td>
+                        <td>TipTime</td>
+                        <td>Toutiao</td>
+                    </tr>
+                    <tr>
+                        <td>Xingyu CDN</td>
+                        <td>OneThing Cloud</td>
+                        <td>Zuiyou, Wasu TV, Netease, Toutiao, GiTV, imoo, Xiaomi</td>
+                    </tr>
+                    <tr>
+                        <td>Bilibili CDN</td>
+                        <td>OneThing Cloud</td>
+                        <td>Bilibili</td>
+                    </tr>
+                    <tr>
+                        <td>Baidu CDN</td>
+                        <td>OneThing Cloud</td>
+                        <td>Haokan Video, Baidu Cloud</td>
+                    </tr>
+                    <tr>
+                        <td>Xunlei CDN</td>
+                        <td>OneThing Cloud</td>
+                        <td>Xunlei</td>
+                    </tr>
+                </tbody>
+              </table>
+              
+            </ul>
+          </div>
+        </section>
+
+
+        <!-- Section 3 -->
+        <section class="section">
+          <div class="container is-max-desktop content">
+            <h2 class="title">The Security Risks</h2>
+            <ul>
+              <li><strong class="subtitle">The Exposure of Credentials to Attackers</strong></li>
+              <p>
+                We find that edge nodes across platforms tend to share and locally store long-term TLS credentials, which renders a non-negligible Man-in-the-Middle(MITM) attacking surface for TLS traffic of content delivery.
+                <br>
+                Once edge nodes operated by the attacker gain access to TLS credentials, it could control the content delivery flow.
+              </p>
+              <div align="center" style="margin-bottom:30px">
+                <img src="static/images/fig3.png" width="70%" />
+                <p><strong>The Scenario of the Man-in-The-Middle Attacks</strong></p>
+              </div>
+              
+              <li><strong class="subtitle">Low Threat Reputation of Edge Node IPs</strong></li>
+              <p>
+                We looked into malicious traces of edge nodes as learned from the proprietary threat intelligence platform, which reveals that edge node IPs are concurrently involved in malicious activities that feature both a large scale and diverse categories.
+                <br>
+                Table below presents top 5 along with their contribution to MTFs and the involved edge nodes, including botnet, remote access trojan (RAT), illicit promotion,  cryptojacking, and malicious downloads. Particularly, over 1.3 billion botnet traffic flows have been captured, which involve 11% of all the sampled edge node IPs. On the other hand, 55.90% edge node IPs are involved in MTFs of RAT which suggest that one or more machines attached to these IPs are compromised with RATs installed.
+              </p>
+              <table>
+                <caption><strong>Top 5 categories of malicious traffic flows.</strong></caption>
+                <thead>
+                    <tr>
+                        <th>Category</th>
+                        <th>MTFs</th>
+                        <th>% MTFs</th>
+                        <th>% Edge IPs</th>
+                        <th>% CDN IPs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Botnet</td>
+                        <td>1.37B</td>
+                        <td>68.92%</td>
+                        <td>11.08%</td>
+                        <td>11.84%</td>
+                    </tr>
+                    <tr>
+                        <td>RAT<sup>1</sup></td>
+                        <td>312M</td>
+                        <td>15.69%</td>
+                        <td>55.90%</td>
+                        <td>59.59%</td>
+                    </tr>
+                    <tr>
+                        <td>Illicit promotion</td>
+                        <td>111M</td>
+                        <td>5.60%</td>
+                        <td>48.88%</td>
+                        <td>50.73%</td>
+                    </tr>
+                    <tr>
+                        <td>Cryptojacking</td>
+                        <td>67M</td>
+                        <td>3.38%</td>
+                        <td>17.17%</td>
+                        <td>18.09%</td>
+                    </tr>
+                    <tr>
+                        <td>Malicious downloads</td>
+                        <td>44M</td>
+                        <td>2.21%</td>
+                        <td>4.92%</td>
+                        <td>5.19%</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="5">
+                            <small>
+                                <sup>1</sup> RAT stands for the remote access trojan.
+                            </small>
+                        </td>
+                    </tr>
+                </tfoot>
+              </table>
+
+              <li><strong class="subtitle">The Validation Failures of TLS Certificates</strong></li>
+              <p>
+                We observe and demonstrate that edge nodes of both OECPs fail to verify the server TLS certificate for part of the TLS traffic flows. A TipTime edge node is subject to this vulnerability for all the TLS traffic towards upstream servers, while only the logging traffic of OneThingCloud edge nodes shares this vulnerability. 
+              </p>
+              <table>
+                  <caption><strong>The issue of certificate validation failures for edge nodes, wherein &#10006; denotes validation failures.</strong></caption>
+                  <thead>
+                      <tr>
+                          <th rowspan="2">Edge Type</th>
+                          <th colspan="3">Traffic Category</th>
+                      </tr>
+                      <tr>
+                          <th>Control<sup>1</sup></th>
+                          <th>Logging<sup>1</sup></th>
+                          <th>Task Payload<sup>1</sup></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td>TipTime</td>
+                          <td>&#10006;</td>
+                          <td>&#10006;</td>
+                          <td>&#10006;</td>
+                      </tr>
+                      <tr>
+                          <td>OneThingCloud</td>
+                          <td>&#10004;</td>
+                          <td>&#10006;</td>
+                          <td>&#10004;</td>
+                      </tr>
+                  </tbody>
+                  <tfoot>
+                      <tr>
+                          <td colspan="4">
+                              <small>1. Task Payloads denotes flows for downloading deployment payloads of edge computing tasks.</small>
+                          </td>
+                      </tr>
+                  </tfoot>
+              </table>
+            </ul>
+            <p>More security risks can be found in our <a href="https://arxiv.org/abs/2404.09681">paper</a>.</p>
+          </div>
+        </section>
+
+
+
+
+
+        <!-- Paper poster -->
+<!--         <section class="hero is-small is-light">
+          <div class="hero-body">
+            <div class="container">
+              <h2 class="title">Poster</h2>
+              <iframe  src="static/pdfs/sample.pdf" width="100%" height="550">
+              </iframe>
+              
+            </div>
+          </div>
+        </section> -->
+        <!--End paper poster -->
+        <!--BibTex citation -->
+        <section class="section" id="BibTeX">
+          <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+          <pre><code>@article{bi2024dissectingopenedgecomputing,
+      title={Dissecting Open Edge Computing Platforms: Ecosystem, Usage, and Security Risks}, 
+      author={Yu Bi and Mingshuo Yang and Yong Fang and Xianghang Mi and Shanqing Guo and Shujun Tang and Haixin Duan},
+      year={2024},
+      eprint={2404.09681},
+      archivePrefix={arXiv},
+      url={https://arxiv.org/abs/2404.09681}
+}</code></pre>
+        </div>
+      </section>
+      <!--End BibTex citation -->
+      <footer class="footer">
+        <div class="container">
+          <div class="columns is-centered">
+            <div class="column is-8">
+              <div class="content">
+                <p>
+                  This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                  <br> This template is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                  Commons Attribution-ShareAlike 4.0 International License</a>.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- Statcounter tracking code -->
+      
+      <!-- You can add a tracker to track page visits by creating an account at statcounter.com -->
+      <!-- End of Statcounter Code -->
+    </body>
+  </html>
