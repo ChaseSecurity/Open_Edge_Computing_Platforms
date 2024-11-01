@@ -2,7 +2,7 @@
 
 The source code for the paper *Dissecting Open Edge Computing Platforms: Ecosystem, Usage, and Security Risks*, **ACSAC 2024**.
 
-More introdution in [Project website](https://chasesecurity.github.io/Open_Edge_Computing_Platforms/).
+More details can be found on [the Project website](https://chasesecurity.github.io/Open_Edge_Computing_Platforms/).
 
 ## Overview
 
